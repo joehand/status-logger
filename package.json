@@ -1,0 +1,16 @@
+{
+  "name": "status-logger",
+  "version": "1.0.0",
+  "description": "print updating progress to console and stdout",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Joe Hand <joe@joeahand.com> (http://joeahand.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "single-line-log": "^1.1.1"
+  },
+  "devDependencies": {
+  }
+}
