@@ -3,7 +3,9 @@
 
 Log a progress status while also queuing messages. 
 
-Messages are added to queue and printed above status lines.
+* Messages are added to queue and printed above status lines.
+* Status can be multi-line, specify line with each message.
+
 
 ## Usage
 
@@ -23,6 +25,7 @@ log.status('Percentage' + percentage, 2)
 // update percentage & will print updated info with interval
 
 log.status('Last line', -1) // print to last status line
+log.status('Overwrite line 1', 1)
 ```
 
 ### `log.message(msg)`: log a message
