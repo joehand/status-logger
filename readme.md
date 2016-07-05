@@ -9,7 +9,7 @@ Log a progress status while also queuing messages.
 
 ## Usage
 
-```
+```javascript
 var statusLogger = require('status-logger')
 
 var log = statusLogger(opts)
