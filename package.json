@@ -1,6 +1,6 @@
 {
   "name": "status-logger",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "print updating progress to console and stdout",
   "main": "index.js",
   "scripts": {
