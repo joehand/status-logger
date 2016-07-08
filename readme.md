@@ -26,7 +26,13 @@ log.status('Percentage' + percentage, 2)
 
 log.status('Last line', -1) // print to last status line
 log.status('Overwrite line 1', 1)
+
+setInterval(function () {
+    log.print() // print on interval
+}, 500)
 ```
+
+### `log.print()`: print status + messages
 
 ### `log.message(msg)`: log a message
 
@@ -34,6 +40,5 @@ log.status('Overwrite line 1', 1)
 
 ## Options
 
-* `logspeed`: interval for printing
 * `quiet`: do not print anything
 * `debug`: print everything to console.log or console.error

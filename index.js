@@ -1,27 +1,17 @@
 var singleLineLog = require('single-line-log')
 
 module.exports = function (opts) {
+  if (!opts) opts = {}
   var logger = getLogger(opts)
 
   var messageQueue = []
   var statusLines = []
   var statusLastLine = ''
 
-  var LOG_INTERVAL = (opts.logspeed ? +opts.logspeed : 200)
-  if (isNaN(LOG_INTERVAL)) LOG_INTERVAL = 200
-
-  setInterval(function () {
-    print()
-  }, LOG_INTERVAL)
-  print()
-
-  process.on('exit', function (code) {
-    if (code !== 1) print()
-  })
-
   return {
     message: message,
-    status: status
+    status: status,
+    print: print
   }
 
   function message (msg) {
@@ -36,7 +26,7 @@ module.exports = function (opts) {
   }
 
   function print () {
-    logger.stdout() // Clear old stdout before printing messages
+    // logger.stdout() // Clear old stdout before printing messages
     while (true) {
       if (messageQueue.length === 0) break
       logger.log(messageQueue[0])
