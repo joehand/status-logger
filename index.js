@@ -26,7 +26,7 @@ module.exports = function (opts) {
   }
 
   function print () {
-    // logger.stdout() // Clear old stdout before printing messages
+    logger.stdout() // Clear old stdout before printing messages
     while (true) {
       if (messageQueue.length === 0) break
       logger.log(messageQueue[0])
