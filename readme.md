@@ -10,16 +10,32 @@ Each message group is an array of lines to print. Lines and groups can be update
 ```js
 var outputLines = []
 var log = statusLogger([outputLines])
-setInterval(function () {
-  log.print()
-}, 100)
 
 var sec = 0
-outputLines.push('I am starting.')
+outputLines[0] = 'Status Logger Example:'
+outputLines[1] 'I am starting.'
 setInterval(function () {
   sec++
   outputLines[1] = 'I am progressing & overwriting this line. Seconds = ' + sec
 }, 1000)
+
+setInterval(function () {
+  log.print()
+}, 100)
+```
+
+Initially this would print:
+
+```
+Status Logger Example:
+I am starting.
+```
+
+After each interval the second line would update, the first line remain the same:
+
+```
+Status Logger Example:
+I am progressing & overwriting this line. Seconds = 2.
 ```
 
 See `example.js` for full example with multiple message groups.
