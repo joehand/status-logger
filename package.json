@@ -7,9 +7,9 @@
     "test": "standard"
   },
   "author": "Joe Hand <joe@joeahand.com> (http://joeahand.com/)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "single-line-log": "^1.1.1"
+    "ansi-diff-stream": "^1.1.1"
   },
   "devDependencies": {},
   "repository": {

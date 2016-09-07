@@ -1,44 +1,51 @@
 
 # Status Logger
 
-Log a progress status while also queuing messages. 
+Send groups of messages, update the messages, and print them to stdout via [ansi-diff-stream](https://github.com/mafintosh/ansi-diff-stream).
 
-* Messages are added to queue and printed above status lines.
-* Status can be multi-line, specify line with each message.
+Each message group is an array of lines to print. Lines and groups can be updated and printed. Groups are printed in order with a line in between them.
 
+## Example
 
-## Usage
-
-```javascript
-var statusLogger = require('status-logger')
-
-var log = statusLogger(opts)
-
-log.message('Send a regular console log message') // queue message for next interval
-
-log.status('Print to stdout line 0', 0) // print to stdout line 0 in next interval
-log.status('Print to stdout line 1', 1)
-
-var percentage = 0
-log.status('Percentage' + percentage, 2)
-
-// update percentage & will print updated info with interval
-
-log.status('Last line', -1) // print to last status line
-log.status('Overwrite line 1', 1)
-
+```js
+var outputLines = []
+var log = statusLogger([outputLines])
 setInterval(function () {
-    log.print() // print on interval
-}, 500)
+  log.print()
+}, 100)
+
+var sec = 0
+outputLines.push('I am starting.')
+setInterval(function () {
+  sec++
+  outputLines[1] = 'I am progressing & overwriting this line. Seconds = ' + sec
+}, 1000)
 ```
 
-### `log.print()`: print status + messages
+See `example.js` for full example with multiple message groups.
 
-### `log.message(msg)`: log a message
+## Installation
 
-### `log.status(msg, lineNum)`: print to stdout line
+```
+npm install status-logger
+```
 
-## Options
+## API
+
+### `var log = statusLogger(messageGroups, opts)
+
+`messageGroups` is an array groups with of lines to print. They will be printed in order.
+
+### Options
 
 * `quiet`: do not print anything
 * `debug`: print everything to console.log or console.error
+
+### `log.print()`: print messages from all groups
+
+### `log.groups`: array of message groups
+
+
+## License
+
+MIT
