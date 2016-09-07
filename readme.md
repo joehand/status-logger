@@ -32,7 +32,7 @@ npm install status-logger
 
 ## API
 
-### `var log = statusLogger(messageGroups, opts)
+### `var log = statusLogger(messageGroups, opts)`
 
 `messageGroups` is an array groups with of lines to print. They will be printed in order.
 
