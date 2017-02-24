@@ -9,16 +9,13 @@ module.exports = function (messageGroups, opts) {
   if (!opts.debug && !opts.quiet) diff.pipe(process.stdout)
 
   return {
+    diff: diff,
     groups: messageGroups,
     print: function () {
-      var msg = ''
-      var prevGroup = false
-      messageGroups.forEach(function (messages) {
-        if (!messages.length) return
-        if (prevGroup) msg += '\n'
-        msg += messages.join('\n')
-        prevGroup = true
-      })
+      var flattened = messageGroups.reduce(function (a, b) {
+        return a.concat(b)
+      }, [])
+      var msg = flattened.join('\n')
       if (opts.debug) console.log(msg)
       else if (!opts.quiet) diff.write(msg)
     }
