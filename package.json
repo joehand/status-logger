@@ -9,7 +9,9 @@
   "author": "Joe Hand <joe@joeahand.com> (http://joeahand.com/)",
   "license": "MIT",
   "dependencies": {
-    "ansi-diff-stream": "^1.2.0"
+    "ansi-diff-stream": "^1.2.0",
+    "lodash.flattendeep": "^4.4.0",
+    "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {},
   "repository": {

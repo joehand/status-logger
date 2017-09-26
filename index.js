@@ -1,5 +1,7 @@
 var assert = require('assert')
 var differ = require('ansi-diff-stream')
+var flattenDeep = require('lodash.flattendeep')
+var wrapAnsi = require('wrap-ansi')
 
 module.exports = function (messages, opts) {
   assert.ok(messages && Array.isArray(messages), 'status-logger: Message array required')
@@ -23,15 +25,9 @@ module.exports = function (messages, opts) {
 
   function print (lines) {
     var output = lines || logger.messages
-    var msg = flatten(output).join('\n')
+    var msg = wrapAnsi(flattenDeep(output).join('\n'), process.stdout.columns - 1, {hard: true})
     if (opts.debug) console.log(msg)
     else if (!opts.quiet) logger.diff.write(msg)
-
-    function flatten (arr) {
-      return arr.reduce(function (a, b) {
-        return a.concat(Array.isArray(b) ? flatten(b) : b)
-      }, [])
-    }
   }
 
   function clear (newLines) {
